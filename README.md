@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-**Play now:** `https://MY-VERCEL-URL.vercel.app`
+**Play now:** `https://feed-frenzy-cyan.vercel.app/`
 
 ## Overview
 

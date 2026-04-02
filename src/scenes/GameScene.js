@@ -1135,7 +1135,7 @@ export default class GameScene extends Phaser.Scene {
       case "brain-lag":
         return type === "blue";
       case "touch-grass":
-        return type === "gold";
+        return type === "gold" || type === "blue";
       case "main-character":
         return type === "gold" || type === "blue";
       case "gremlin-mode":
