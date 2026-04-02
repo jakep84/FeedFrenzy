@@ -4,6 +4,8 @@ import { inject } from "@vercel/analytics";
 import BootScene from "./scenes/BootScene";
 import GameScene from "./scenes/GameScene";
 import EndScene from "./scenes/EndScene";
+/**vercel analytics */
+inject();
 
 /** Portrait 9:16 — same aspect as Variant games (e.g. 720×1280). */
 const VIEW_W = 720;
