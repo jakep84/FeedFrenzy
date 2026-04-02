@@ -81,7 +81,6 @@ export default class EndScene extends Phaser.Scene {
     this.input.keyboard?.on("keydown-R", this.restartHandler);
 
     this.events.once("shutdown", this.cleanup, this);
-    this.events.once("destroy", this.cleanup, this);
   }
 
   createHero(anim, width, height) {
@@ -94,7 +93,6 @@ export default class EndScene extends Phaser.Scene {
       this.hero.x = width + 40;
       this.hero.y = height * 0.67;
 
-      // Face left while traveling left so the moonwalk reads correctly.
       this.hero.skeleton.scaleX = -Math.abs(this.hero.skeleton.scaleX);
       this.hero.animationState.setAnimation(0, "Moonwalk", true);
 
@@ -143,19 +141,20 @@ export default class EndScene extends Phaser.Scene {
   }
 
   restartGame() {
-    if (!this.scene.isActive()) return;
     this.scene.start("GameScene");
   }
 
   cleanup() {
-    if (this.restartHandler) {
-      this.input.keyboard?.off("keydown-R", this.restartHandler);
+    if (this.restartHandler && this.input?.keyboard) {
+      this.input.keyboard.off("keydown-R", this.restartHandler);
       this.restartHandler = null;
     }
 
     if (this.replayButton) {
       this.replayButton.off("pointerup", this.restartGame, this);
-      this.replayButton.removeInteractive();
+      if (this.replayButton.input) {
+        this.replayButton.removeInteractive();
+      }
       this.replayButton = null;
     }
 
