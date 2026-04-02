@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { SpinePlugin } from "@esotericsoftware/spine-phaser-v4";
+import { inject } from "@vercel/analytics";
 import BootScene from "./scenes/BootScene";
 import GameScene from "./scenes/GameScene";
 import EndScene from "./scenes/EndScene";
